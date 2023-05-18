@@ -1,0 +1,4 @@
+*/*.class
+/.metadata
+/compressed_folder
+/ORB
