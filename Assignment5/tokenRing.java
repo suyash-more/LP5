@@ -32,5 +32,6 @@ class TokenRing {
             System.out.println("Message '" + message + "' forwarded by " + i);
         }
         System.out.println("Receiver " + receiver + " Received Message: " + message);
+        token = sender;
     }
 }
