@@ -70,6 +70,7 @@ public class Ring {
 		 int current_coordinator = id;	 
 		 int token = (id + 1) % n;
 		 System.out.println("\nElection initiator : " + (id + 1));
+		 
 		 //	Election algorithm
 		 while(token != id) {
 			System.out.println("Token at process " + (token + 1));
