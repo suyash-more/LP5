@@ -9,7 +9,6 @@ class TokenRing {
         int token = 0;
         int sender, receiver;
         String message;
-        boolean message_pass = false;
         System.out.println("Initializing ring");
         for(int i = 0; i < n; i++) {
             System.out.print(" " + i);                        
