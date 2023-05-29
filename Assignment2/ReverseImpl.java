@@ -1,5 +1,4 @@
 import ReverseModule.ReversePOA;
-import java.lang.String;
 
 class ReverseImpl extends ReversePOA {
 	ReverseImpl() {

@@ -9,8 +9,8 @@ class ReverseClient {
         Reverse ReverseImpl = null;
         try {
             // Initialize the ORB
-            org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args, null);
-            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+            ORB orb = ORB.init(args, null);
+            Object objRef = orb.resolve_initial_references("NameService");
             NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
             String name = "Reverse";
             ReverseImpl = ReverseHelper.narrow(ncRef.resolve_str(name));

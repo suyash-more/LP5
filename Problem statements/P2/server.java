@@ -2,7 +2,7 @@
 import java.net.*;
 import java.io.*;
 
-public class MyServer {
+public class server {
     public static void main(String[] args) throws Exception{
         
         //Creating a port for communication
@@ -18,9 +18,9 @@ public class MyServer {
 
         //OutputStream object to write to clients
         OutputStream ostream = s.getOutputStream();
-        
+
         //PrintWriter object to send the data to the outputstream 
-        PrintWriter pw = new PrintWriter(ostream, true);
+        PrintWriter pw = new PrintWriter(ostream,true);
 
         //InputStream objects to recieve from Client
         InputStream istream = s.getInputStream();
@@ -65,3 +65,4 @@ public class MyServer {
         System.out.println("Connection Terminated");
     }    
 }
+

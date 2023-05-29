@@ -2,66 +2,65 @@
 import java.net.*;
 import java.io.*;
 
-public class MyServer {
+public class client {
     public static void main(String[] args) throws Exception{
         
-        //Creating a port for communication
-        ServerSocket ss = new ServerSocket(5555);
-        System.out.println("Server Initiated, Waiting for Client to Connect...");
-
-        //Binding Client and Server on port 5555
-        Socket s = ss.accept();
-        System.out.println("Client Connected");
+        //The socket object takes ip and port number of the server which client wants to connect
+        Socket s = new Socket("127.0.0.1",5555);
+        System.out.println("Connected to Server, Please type your message and hit Enter to send");
 
         //Reading input from KeyBoard
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        //OutputStream object to write to clients
+        //OutputStream object to write to Server
         OutputStream ostream = s.getOutputStream();
-        
+
         //PrintWriter object to send the data to the outputstream 
         PrintWriter pw = new PrintWriter(ostream, true);
 
-        //InputStream objects to recieve from Client
+        //InputStream objects to recieve from Server
         InputStream istream = s.getInputStream();
 
-        //Reading receieved message from client
+        //Reading receieved message from Server        
         BufferedReader recieve = new BufferedReader(new InputStreamReader(istream));
 
         //Client Message and Server Message objects
-        String servermessage = "";
         String clientmessage = "";
+        String servermessage = "";
+
 
         while(true)
         {
-            //Read the inputstream of the client from the socket
-            clientmessage = recieve.readLine();
-            System.out.println("Client: "+clientmessage);
+            //Input Message to be sent to Server
+            System.out.print("Client: ");
+            clientmessage = br.readLine();
 
+            //print writer object sending the message to the socket through outputstream
+            pw.println(clientmessage);
+            
             //if the message is bye end the communication here
             if(clientmessage.equals("bye"))
             {
                 break;
             }
-            
-            //Server writing its message
-            System.out.print("Server: ");
-            servermessage = br.readLine();
 
-            //print writer object sending the message to the socket through outputstream
-            pw.println(servermessage);
+            //Read the inputstream of the server from the socket
+            servermessage = recieve.readLine();
+            System.out.println("Server: "+servermessage);
+
+            //if the message is bye end the communication here
             if(servermessage.equals("bye"))
             {
                 break;
             }
         }
 
-        //closing all the streams and sockets
+        //closing all the streams and sockets 
         s.close();
-        ss.close();
         istream.close();
         ostream.close();
 
         System.out.println("Connection Terminated");
-    }    
+    }
 }
+
